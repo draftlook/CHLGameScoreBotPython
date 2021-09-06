@@ -1,0 +1,12 @@
+requests
+pandas
+json
+time
+random
+itertools
+numpy
+collections
+operator
+bs4
+dataframe_image
+tweepy

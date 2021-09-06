@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import dataframe_image as dfi
 import tweepy
 import os
+from datetime import datetime
 
 ##Function: Get daily game urls for OHL, WHL, and QMJHL
 def get_daily_urls(date):
@@ -211,7 +212,8 @@ def tweet_game_stats(gameurl):
     return(tabledf)
 
 # Setting date
-date = "2019-09-29"
+dateinfo = datetime.now()
+date = dateinfo.strftime("%Y") + "-" + dateinfo.strftime("%m") + "-" + dateinfo.strftime("%d")
 # Execute function get_daily_urls to get all game urls for the day's games
 game_urls = get_daily_urls(date)
 # Execute function tweet_game_stats for each url in game_urls

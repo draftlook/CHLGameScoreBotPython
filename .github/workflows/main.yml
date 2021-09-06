@@ -5,18 +5,18 @@ on:
     - cron:  '0 5 * * *'
   workflow_dispatch:
   
-  jobs:
-    tweet:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-python@v2
-        - name: install dependencies
-          run: pip install -r requirements.txt
-        - name: run script
-          env:
-            API_KEY: ${{ secrets.API_KEY }}
-            API_SECRET: ${{ secrets.API_SECRET }}
-            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-            ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
-          run: python main.py
+jobs:
+  tweet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: run script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+          API_SECRET: ${{ secrets.API_SECRET }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
+        run: python main.py

@@ -10,6 +10,7 @@ import operator
 from bs4 import BeautifulSoup
 import dataframe_image as dfi
 import tweepy
+import os
 
 ##Function: Get daily game urls for OHL, WHL, and QMJHL
 def get_daily_urls(date):
@@ -198,14 +199,9 @@ def tweet_game_stats(gameurl):
     tabledf.reset_index(drop=True, inplace=True)
     # Saving tabledf as a png to filepath "temp.png"
     dfi.export(tabledf, "temp.png")
-    # Specifying Twitter auth info
-    api_key = "UUufbRWhGsfx9UrOBuXFtx5IQ"
-    api_key_secret = "1b26NNigEhK5EqjPxYbU2z7gdEkVkqQ5LrEivRa7Bs834y1ow4"
-    access_token = "1419002410639388673-XyBHnUQu511ciObLMIQd2xcT8rqYfV"
-    access_token_secret = "EkCfvfFlimSCYP1izg92Vplltf1Ms6V4AqLSpszLfBIz1"
     # Authenticating to Twitter
-    auth = tweepy.OAuthHandler(api_key, api_key_secret)
-    auth.set_access_token(access_token, access_token_secret)
+    auth = tweepy.OAuthHandler(os.environ['API_KEY'], os.environ['API_SECRET'])
+    auth.set_access_token(os.environ['ACCESS_TOKEN'], os.environ['ACCESS_SECRET'])
     # Creating API object
     api = tweepy.API(auth)
     # Creating tweet string
@@ -230,14 +226,9 @@ all_games.reset_index(drop=True, inplace=True)
 top_games = all_games.head(10)
 # Saving all_games as png at filepath "top_performers_temp.png"
 dfi.export(top_games, "top_performers_temp.png")
-# Setting Twitter auth info
-api_key = "UUufbRWhGsfx9UrOBuXFtx5IQ"
-api_key_secret = "1b26NNigEhK5EqjPxYbU2z7gdEkVkqQ5LrEivRa7Bs834y1ow4"
-access_token = "1419002410639388673-XyBHnUQu511ciObLMIQd2xcT8rqYfV"
-access_token_secret = "EkCfvfFlimSCYP1izg92Vplltf1Ms6V4AqLSpszLfBIz1"
 # Authenticating to Twitter
-auth = tweepy.OAuthHandler(api_key, api_key_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(os.environ['API_KEY'], os.environ['API_SECRET'])
+auth.set_access_token(os.environ['ACCESS_TOKEN'], os.environ['ACCESS_SECRET'])
 # Creating API object
 api = tweepy.API(auth)
 # Creating tweet string

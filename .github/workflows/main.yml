@@ -1,4 +1,6 @@
-name: Tweet latest progresson:
+name: Tweet latest progress
+
+on:
   schedule:
     - cron:  '0 5 * * *'
   workflow_dispatch:
@@ -17,4 +19,4 @@ name: Tweet latest progresson:
             API_SECRET: ${{ secrets.API_SECRET }}
             ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
             ACCESS_SECRET: ${{ secrets.ACCESS_SECRET }}
-        run: python main.py
+          run: python main.py

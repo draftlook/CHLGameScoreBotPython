@@ -218,8 +218,12 @@ date = dateinfo.strftime("%Y") + "-" + dateinfo.strftime("%m") + "-" + str((int(
 game_urls = get_daily_urls(date)
 # Execute function tweet_game_stats for each url in game_urls
 game_stats = []
-for i in game_urls: game_stats.append(tweet_game_stats(i))
-
+for i in game_urls:
+    try:
+        game_stats.append(tweet_game_stats(i))
+    except:
+        pass
+    
 # Combining all dfs in game_stats into one single df
 all_games = pd.concat(game_stats).sort_values(by='GameScore', ascending=False)
 # Resetting index for all_games df

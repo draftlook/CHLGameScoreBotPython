@@ -213,7 +213,7 @@ def tweet_game_stats(gameurl):
 
 # Setting date
 dateinfo = datetime.now()
-dateinfo.strftime("%Y") + "-" + dateinfo.strftime("%m") + "-" + str((int(dateinfo.strftime("%d"))-1))
+date = dateinfo.strftime("%Y") + "-" + dateinfo.strftime("%m") + "-" + str((int(dateinfo.strftime("%d"))-1))
 # Execute function get_daily_urls to get all game urls for the day's games
 game_urls = get_daily_urls(date)
 # Execute function tweet_game_stats for each url in game_urls
